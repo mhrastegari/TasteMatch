@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/* The three steps fit side by side only with enough width and height. */
+@custom-variant columns (@media (min-width: 64rem) and (min-height: 41rem));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-star: var(--star);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+
+  --font-math: Cambria, 'STIX Two Text', 'Times New Roman', serif;
+}
+
+@theme {
+  --spacing-safe-t: env(safe-area-inset-top);
+  --spacing-safe-b: env(safe-area-inset-bottom);
+  --spacing-safe-s: env(safe-area-inset-left);
+  --spacing-safe-e: env(safe-area-inset-right);
+}
+
+:root {
+  color-scheme: light dark;
+  --background: #f7f7f4;
+  --foreground: #0b0b0b;
+  --card: #fcfcfb;
+  --primary: #5444d0;
+  --primary-foreground: #ffffff;
+  --muted: #efeee9;
+  --muted-foreground: #5d5c57;
+  --border: #e3e2dc;
+  --ring: #7b6cf0;
+  --star: #e09600;
+
+  --chart-1: #2a78d6;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --chart-5: #e87ba4;
+  --chart-6: #008300;
+  --chart-7: #6250d6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111014;
+    --foreground: #f0efec;
+    --card: #1a1a1d;
+    --primary: #9085e9;
+    --primary-foreground: #120f2b;
+    --muted: #232227;
+    --muted-foreground: #a9a8a1;
+    --border: #2e2d33;
+    --ring: #9085e9;
+    --star: #f5b83d;
+
+    --chart-1: #3987e5;
+    --chart-2: #d95926;
+    --chart-3: #199e70;
+    --chart-5: #d55181;
+    --chart-6: #0ca30c;
+    --chart-7: #9085e9;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    /* Everything is sized in rem, so large screens and projectors scale up. */
+    font-size: clamp(16px, min(2.1dvh, 1.25vw), 26px);
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
